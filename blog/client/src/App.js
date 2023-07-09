@@ -5,6 +5,7 @@ import Heading from './Component/Heading';
 import List from './Component/Post/List';
 import Upload from './Component/Post/Upload';
 import Detail from './Component/Post/Detail';
+import Edit from './Component/Post/Edit';
 
 function App() {
 
@@ -17,13 +18,16 @@ function App() {
     <>
       <Heading />
       <Routes>
-        <Route path='/'
-          element={<List ContentList={ContentList} setContentList={setContentList} />} />
-        <Route path='/upload'
-          element={<Upload ContentList={ContentList} setContentList={setContentList} />} />
+
+        <Route path='/' element={<List ContentList={ContentList} setContentList={setContentList} />} />
+
+        <Route path='/upload' element={<Upload ContentList={ContentList} setContentList={setContentList} />} />
 
         {/* path 변수는 : 을 통해 줄 수 있다 */}
         <Route path='/post/:postNum' element={<Detail />} />
+
+        <Route path='/edit/:postNum' element={<Edit />} />
+
       </Routes>
 
     </>

@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useEffect, React, useState } from 'react';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
+import { Post, PostDiv, SpinnerDiv, BtnDiv } from '../../Style/PostDetailCSS';
 
 
 function Detail() {
@@ -40,17 +41,32 @@ function Detail() {
 
 
     return (
-        <>
-            {Flag ?
+        <PostDiv>
+            {Flag ? (
                 <>
-                    <div>{PostInfo.title}</div>
-                    <div>{PostInfo.content}</div>
-                </> : <Spinner animation="grow" variant="success" />}
+                    <Post>
+                        <h1>{PostInfo.title}</h1>
+                        <p>{PostInfo.content}</p>
+                    </Post>
 
+                    <BtnDiv>
+                        <Link to={`/edit/${PostInfo.postNum}`}>
+                            <button className='edit'> 수정</button>
+                        </Link>
 
-        </>
+                        <button className='delete'> 삭제</button>
+                    </BtnDiv>
+                </>
+            ) : (
+                <SpinnerDiv>
+                    <Spinner animation="border" role="status">
+                        <span className='visually-hidden'> Loading... </span>
+                    </Spinner>
+                </SpinnerDiv>
 
-    )
+            )}
+        </PostDiv>
+    );
 }
 
 export default Detail
