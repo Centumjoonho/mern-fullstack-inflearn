@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, React, useState } from 'react';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
@@ -12,6 +12,8 @@ function Detail() {
     const [PostInfo, setPostInfo] = useState({});
 
     const [Flag, setFlag] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -33,12 +35,30 @@ function Detail() {
             })
 
         console.log(params); // log the params to check if it's working correctly
-    }, []);
+    }, [params]);
 
     useEffect(() => {
         console.log(PostInfo);
     }, [PostInfo])
 
+    const DeleteHandler = () => {
+        if (window.confirm('Are you sure you want to delete')) {
+            let body = {
+                postNum: params.postNum
+            }
+
+            axios.post('/api/post/delete', body).then(response => {
+                if (response.data.success === true) {
+                    alert('게시글 삭제를 완료하였습니다')
+                    navigate('/');
+
+                }
+            }).catch(err => {
+                console.log(err);
+                alert('게시글 삭제를 실패하였습니다')
+            })
+        }
+    }
 
     return (
         <PostDiv>
@@ -54,7 +74,7 @@ function Detail() {
                             <button className='edit'> 수정</button>
                         </Link>
 
-                        <button className='delete'> 삭제</button>
+                        <button className='delete' onClick={() => { DeleteHandler() }}> 삭제</button>
                     </BtnDiv>
                 </>
             ) : (

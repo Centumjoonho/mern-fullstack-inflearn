@@ -67,6 +67,13 @@ button{
     color: black;
     border : 1px solid black;
   }
+  &.cancel{
+    margin-left: 10px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border:1px solid black;
+  }
 
 }
   

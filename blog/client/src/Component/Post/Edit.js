@@ -104,13 +104,19 @@ function Edit() {
                     }}
                 />
 
-                <UploadButtonDiv
-
-                >
+                <UploadButtonDiv>
                     <button
                         onClick={(e) => {
                             onSubmit(e);
                         }}>수정</button>
+
+                    <button className="cancel"
+                        onClick={(e) => {
+                            e.preventDefault();
+
+                            navigate(-1);
+
+                        }}>취소</button>
 
                 </UploadButtonDiv>
             </UploadForm>
