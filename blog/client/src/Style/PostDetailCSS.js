@@ -1,37 +1,40 @@
 import styled from "@emotion/styled";
 
 const PostDiv = styled.div`
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    max-width: 756px;
-    margin: 0 auto !important;
-    @media (max-width: 756px) {
-        width:90%
-    }
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  max-width: 756px;
+  margin: 0 auto !important;
+  @media (max-width: 756px) {
+    width: 90%;
+  }
 `;
 
 const SpinnerDiv = styled.div`
-    width: 100%;
-    height: calc(100vh - 2rem);
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: calc(100vh - 2rem);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Post = styled.div`
-    width: 100%;
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  padding: 30px 20px;
+  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.3), 0px 15px 12px rgba(0, 0, 0, 0.3);
+  h1 {
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: 0px;
+  }
+  img {
+    width: 80%;
     height: auto;
-    background: #ffffff;
-    padding: 30px 20px;
-    box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.3),
-    0px 15px 12px rgba(0, 0, 0, 0.3);
-    h1 {
-        font-weight:bold;
-    }
-    p {
-        margin-bottom:0px;
-    }
+  }
 `;
 
 const BtnDiv = styled.div`
@@ -69,8 +72,6 @@ const BtnDiv = styled.div`
         }
     }
 
-`
+`;
 
-
-
-export { PostDiv, Post, SpinnerDiv, BtnDiv } 
+export { PostDiv, Post, SpinnerDiv, BtnDiv };
