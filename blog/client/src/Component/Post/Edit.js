@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ImageUpload from "./ImageUpload.js";
 
 import axios from "axios";
+import Download from "./Download.js"; // 추가
 
 function Edit() {
     // 경로 상 존재하는 postNum 변수 값(string)
@@ -15,13 +16,16 @@ function Edit() {
 
     const [PostInfo, setPostInfo] = useState({});
 
-    const [Flag, setFlag] = useState(false);
-
     const [Title, setTitle] = useState("");
+
     const [Content, setContent] = useState("");
 
     const [Image, setImage] = useState("");
+
     const navigate = useNavigate();
+
+    // 수정된 부분: ImageDownloadLink 컴포넌트를 위한 상태 추가
+    const [ImageDownloadLink, setImageDownloadLink] = useState(null);
 
     useEffect(() => {
         let body = {
@@ -33,10 +37,8 @@ function Edit() {
             .then((response) => {
                 if (response.data.success === true) {
                     setPostInfo(response.data.post);
-
-                    console.log(response.data.post);
-
-                    setFlag(true);
+                    console.log(PostInfo)
+                    setImageDownloadLink(response.data.post.image);
                 }
             })
             .catch((err) => {
@@ -50,8 +52,8 @@ function Edit() {
         setContent(PostInfo.content);
         setImage(PostInfo.image);
 
-    }, [PostInfo]);
 
+    }, [PostInfo]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -97,6 +99,11 @@ function Edit() {
                 />
 
                 <ImageUpload setImage={setImage}></ImageUpload>
+
+                {/* 이미지 다운로드 링크를 표시합니다. */}
+                {ImageDownloadLink && (
+                    <Download filePath={ImageDownloadLink} />
+                )}
 
                 <label>내용</label>
 

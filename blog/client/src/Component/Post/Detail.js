@@ -23,6 +23,7 @@ function Detail() {
             .post("/api/post/detail", body)
             .then((response) => {
                 if (response.data.success === true) {
+
                     setPostInfo(response.data.post);
                     setFlag(true);
                 }
@@ -34,7 +35,9 @@ function Detail() {
     }, [params.postNum]);
 
     useEffect(() => {
-        console.log(PostInfo);
+
+        console.log("PostInfo" + PostInfo);
+
     }, [PostInfo]);
 
     const DeleteHandler = () => {
