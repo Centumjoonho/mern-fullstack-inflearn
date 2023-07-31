@@ -1,9 +1,10 @@
 const express = require("express");
-const multer = require("multer");
 const router = express.Router();
 
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
+
+const setUpload = require("../Util/upload.js");
 
 router.post("/submit", (req, res) => {
   // 제출 버튼 누르면 api로 날라온 값 :
@@ -49,7 +50,6 @@ router.post("/detail", (req, res) => {
   Post.findOne({ postNum: Number(req.body.postNum) })
     .exec()
     .then((doc) => {
-      console.log(doc);
       res.status(200).json({ success: true, post: doc });
     })
     .catch((err) => {
@@ -85,25 +85,34 @@ router.post("/delete", (req, res) => {
     });
 });
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "images/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-//.single('file') -> 파일 하나만 업로드
-const upload = multer({ storage: storage }).single("file");
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "images/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + "-" + file.originalname);
+//   },
+// });
+// //.single('file') -> 파일 하나만 업로드
+// const upload = multer({ storage: storage }).single("file");
 
-router.post("/image/upload", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      res.status(400).json({ success: false });
-    } else {
-      res.status(200).json({ success: true, filePath: res.req.file.path });
-    }
+// router.post("/image/upload", (req, res) => {
+//   upload(req, res, (err) => {
+//     if (err) {
+//       res.status(400).json({ success: false });
+//     } else {
+//       res.status(200).json({ success: true, filePath: res.req.file.path });
+//     }
+//   });
+// });
+
+router.post(
+  "/image/upload",
+  setUpload("centum-community"),
+  (req, res, next) => {
+    console.log(res.req)
+    res.status(200).json({ success: true, filePath: res.req.file.location });
+
   });
-});
 
 module.exports = router;

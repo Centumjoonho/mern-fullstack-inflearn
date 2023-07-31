@@ -23,7 +23,7 @@ function Detail() {
             .post("/api/post/detail", body)
             .then((response) => {
                 if (response.data.success === true) {
-
+                    console.log(response.data.post);
                     setPostInfo(response.data.post);
                     setFlag(true);
                 }
@@ -35,8 +35,6 @@ function Detail() {
     }, [params.postNum]);
 
     useEffect(() => {
-
-        console.log("PostInfo" + PostInfo);
 
     }, [PostInfo]);
 
@@ -69,7 +67,7 @@ function Detail() {
                         <h1>{PostInfo.title}</h1>
                         {PostInfo.image ? (
                             <img
-                                src={`http://localhost:5000/${PostInfo.image}`}
+                                src={PostInfo.image}
                                 alt="upload_image"
                             />
                         ) : null}
