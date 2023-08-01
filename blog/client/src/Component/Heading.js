@@ -11,13 +11,14 @@ const Heading = () => {
 
         <Navbar expand="lg" bg='dark' variant='dark'  >
             <Container>
-                <Navbar.Brand href="#home">Centum Joonho</Navbar.Brand>
+                <Navbar.Brand href="/">Centum Joonho</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
 
                         <Link to="/" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>HOME</Link>
 
+                        <Link to="/list" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>LIST</Link>
 
                         <Link to="/upload" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>UPLOAD</Link>
 

@@ -1,8 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import axios from "axios"
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { ListDiv, ListItem } from '../../Style/LIstCSS'
+import { ListDiv, ListItem, ListButton, ListLink } from '../../Style/LIstCSS'
 
 
 
@@ -45,7 +44,8 @@ const List = (props) => {
                         </ListItem>
                     )
                 })}
-                <Button>UPLAOD</Button>
+                <ListButton><ListLink to={`/upload`} >UPLOAD</ListLink></ListButton>
+
             </ListDiv>
 
         </>

@@ -6,6 +6,12 @@ import List from './Component/Post/List';
 import Upload from './Component/Post/Upload';
 import Detail from './Component/Post/Detail';
 import Edit from './Component/Post/Edit';
+import Home from './Component/Home';
+
+import "../src/assets/css/bootstrap.min.css";
+import "../src/assets/css/now-ui-kit.css";
+import "../src/assets/demo/demo.css";
+
 
 function App() {
 
@@ -19,7 +25,9 @@ function App() {
       <Heading />
       <Routes>
 
-        <Route path='/' element={<List ContentList={ContentList} setContentList={setContentList} />} />
+        <Route path='/' element={<Home />} />
+
+        <Route path='/list' element={<List ContentList={ContentList} setContentList={setContentList} />} />
 
         <Route path='/upload' element={<Upload ContentList={ContentList} setContentList={setContentList} />} />
 

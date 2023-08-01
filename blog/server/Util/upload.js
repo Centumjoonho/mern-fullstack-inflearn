@@ -5,8 +5,8 @@ const path = require('path');
 
 const endpoint = 'https://kr.object.ncloudstorage.com';
 const region = 'kr-standard';
-const access_key = 
-const secret_key = 
+const access_key = 'ZVuW8vFDcMkWhOLkzEcA'
+const secret_key = '2FIJHBMuJQYDVhtHfXJ5sUVNfDISRIce1VzwY4EL'
 
 
 const S3 = new S3Client({

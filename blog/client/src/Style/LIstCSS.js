@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from 'react-router-dom';
 
 const ListDiv = styled.div`
 padding-top: 1rem;
@@ -31,4 +32,33 @@ const ListItem = styled.div`
 
 `;
 
-export { ListDiv, ListItem };
+// 스타일드 컴포넌트로 버튼 스타일링하기
+const ListButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:active {
+    background-color: #003d80;
+  }
+`;
+
+// 이동 링크 스타일링
+const ListLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
+
+
+
+export { ListDiv, ListItem, ListButton, ListLink };
