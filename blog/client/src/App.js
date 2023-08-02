@@ -7,6 +7,9 @@ import Upload from './Component/Post/Upload';
 import Detail from './Component/Post/Detail';
 import Edit from './Component/Post/Edit';
 import Home from './Component/Home';
+import Login from './Component/User/Login';
+import Register from './Component/User/Register';
+import { Counter } from './features/counter/Counter';
 
 import "../src/assets/css/bootstrap.min.css";
 import "../src/assets/css/now-ui-kit.css";
@@ -35,6 +38,12 @@ function App() {
         <Route path='/post/:postNum' element={<Detail />} />
 
         <Route path='/edit/:postNum' element={<Edit />} />
+
+        <Route path='/login' element={<Login />} />
+
+        <Route path='/register' element={<Register />} />
+
+        <Route path='/counter' element={<Counter />} />
 
       </Routes>
 

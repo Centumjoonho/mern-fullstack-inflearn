@@ -7,21 +7,21 @@ import { Container } from "reactstrap";
 // core components
 
 function IndexHeader() {
-    // let pageHeader = React.createRef();
+    let pageHeader = React.createRef();
 
-    // React.useEffect(() => {
-    //     if (window.innerWidth > 991) {
-    //         const updateScroll = () => {
-    //             let windowScrollTop = window.pageYOffset / 70;
-    //             pageHeader.current.style.transform =
-    //                 "translate3d(0," + windowScrollTop + "px,0)";
-    //         };
-    //         window.addEventListener("scroll", updateScroll);
-    //         return function cleanup() {
-    //             window.removeEventListener("scroll", updateScroll);
-    //         };
-    //     }
-    // });
+    React.useEffect(() => {
+        if (window.innerWidth > 991) {
+            const updateScroll = () => {
+                let windowScrollTop = window.pageYOffset / 70;
+                pageHeader.current.style.transform =
+                    "translate3d(0," + windowScrollTop + "px,0)";
+            };
+            window.addEventListener("scroll", updateScroll);
+            return function cleanup() {
+                window.removeEventListener("scroll", updateScroll);
+            };
+        }
+    });
 
     return (
         <>
@@ -30,9 +30,9 @@ function IndexHeader() {
                     className="page-header-image"
                     style={{
                         backgroundImage: "url(" + require("../../assets/img/header.jpg") + ")",
-                        backgroundPosition: "center top -50px",
+                        // backgroundPosition: "center top -20px",
                     }}
-                // ref={pageHeader}
+                    ref={pageHeader}
                 >
 
                 </div>

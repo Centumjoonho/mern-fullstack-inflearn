@@ -3,11 +3,13 @@
 # dependencies
 /node_modules
 /node_modules
+/package-lock.json
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+/config/dev.js
 
 # production
 /build

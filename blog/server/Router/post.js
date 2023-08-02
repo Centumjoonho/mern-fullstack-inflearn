@@ -6,6 +6,8 @@ const { Counter } = require("../Model/Counter.js");
 
 const setUpload = require("../Util/upload.js");
 
+
+
 router.post("/submit", (req, res) => {
   // 제출 버튼 누르면 api로 날라온 값 :
   let data = req.body;
@@ -110,7 +112,7 @@ router.post(
   "/image/upload",
   setUpload("centum-community"),
   (req, res, next) => {
-    // console.log(res.req)
+    console.log(res.req) // setUpload 함수로 받아오는 값 전부 다 
     res.status(200).json({ success: true, filePath: res.req.file.location });
 
   });

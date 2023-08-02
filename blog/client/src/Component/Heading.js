@@ -22,6 +22,8 @@ const Heading = () => {
 
                         <Link to="/upload" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>UPLOAD</Link>
 
+                        <Link to="/login" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>LOGIN</Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
