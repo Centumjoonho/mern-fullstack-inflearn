@@ -8,6 +8,7 @@ const region = 'kr-standard';
 const config = require('../config/key.js')
 
 
+
 const S3 = new S3Client({
     endpoint: endpoint,
     region: region,
