@@ -3,7 +3,6 @@ const router = express.Router();
 
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
-
 const setUpload = require("../Util/upload.js");
 
 
@@ -108,6 +107,7 @@ router.post("/delete", (req, res) => {
 //   });
 // });
 
+// 미들웨어 사용법 기억하기 ! 
 router.post(
   "/image/upload",
   setUpload("centum-community"),

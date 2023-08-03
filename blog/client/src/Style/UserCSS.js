@@ -39,6 +39,14 @@ const LoginDiv = styled.div`
                 border: 1px solid black;
             }
         }
+        span {
+            text-align: center ;
+            font-weight: bold;
+            color:#ff4f4a;
+            margin: 0 auto;
+            margin-top: 10px;
+
+        }
         @media (max-width : 756px){
             width: 100%;
         }
