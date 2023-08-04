@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useSelector, useDispatch } from 'react-redux';
+import firebase from './../firebase';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Heading = () => {
+    const navigate = useNavigate();
+    const LogoutHandler = () => {
+        firebase.auth().signOut();
+        navigate('/');
+        alert('정상적으로 로그아웃이 되었습니다.')
+    }
+    // const dispatch=useDispatch();
+    const user = useSelector((state) => state.user);
+
+
     return (
 
         <Navbar expand="lg" bg='dark' variant='dark'  >
@@ -22,9 +35,24 @@ const Heading = () => {
 
                         <Link to="/upload" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>UPLOAD</Link>
 
-                        <Link to="/login" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>LOGIN</Link>
+
 
                     </Nav>
+                </Navbar.Collapse>
+                <Navbar.Collapse className='justify-content-end'>
+
+                    {user.accessToken ? (
+                        <Navbar.Text
+                            style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px" }}
+                            onClick={() => { LogoutHandler() }}>
+                            <span style={{ marginRight: "20px", fontWeight: "bold", fontSize: "1.2rem", color: "yellowgreen" }}>{user.displayName}</span>
+                            LOGOUT</Navbar.Text>
+                    ) : (
+                        <Link to="/login" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>
+                            LOGIN</Link>
+                    )}
+
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>

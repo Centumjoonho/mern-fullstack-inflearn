@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import Heading from './Component/Heading';
 import List from './Component/Post/List';
@@ -9,17 +9,55 @@ import Edit from './Component/Post/Edit';
 import Home from './Component/Home';
 import Login from './Component/User/Login';
 import Register from './Component/User/Register';
-import { Counter } from './features/counter/Counter';
 
+//react-redux
+import { Counter } from './features/counter/Counter';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginUser, clearUser } from './Reducer/userSlice';
+import firebase from './firebase';
+
+//메인 페이지 css
 import "../src/assets/css/bootstrap.min.css";
 import "../src/assets/css/now-ui-kit.css";
 import "../src/assets/demo/demo.css";
+
 
 
 function App() {
 
 
   const [ContentList, setContentList] = useState([]);
+
+  const dispatch = useDispatch();
+  //저장 되어 있는  state를 가져올 수 있다
+  // const user = useSelector((state) => state.user)
+
+  useEffect(() => {
+    // 로그인이나 로그아웃을 하면 값 확인 , 그외에는 값 null
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      if (userInfo) {
+
+        // 데이터 값 정렬화 하는게 좋다고 한다 ! 
+        const userData = {
+
+          displayName: userInfo.multiFactor.user.displayName,
+          uid: userInfo.multiFactor.user.uid,
+          accessToken: userInfo.multiFactor.user.accessToken
+
+        };
+        var loginData = loginUser(userData);
+        // //보낸다 -> store 
+        dispatch(loginData);
+      }
+      else {
+        dispatch(clearUser());
+      }
+
+    })
+
+  }, [])
+
+
 
 
 
