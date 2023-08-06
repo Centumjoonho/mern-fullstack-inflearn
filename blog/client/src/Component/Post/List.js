@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const List = (props) => {
     const user = useSelector(state => state.user)
-    console.log(user.accessToken)
+
     const [PostList, setPostList] = useState([]);
     useEffect(() => {
 

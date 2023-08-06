@@ -49,7 +49,7 @@ function Detail() {
                 .then((response) => {
                     if (response.data.success === true) {
                         alert("게시글 삭제를 완료하였습니다");
-                        navigate("/");
+                        navigate("/list");
                     }
                 })
                 .catch((err) => {

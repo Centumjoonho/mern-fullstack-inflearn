@@ -3,33 +3,48 @@ const router = express.Router();
 
 const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
+const { User } = require('../Model/User.js')
 const setUpload = require("../Util/upload.js");
 
 
 
 router.post("/submit", (req, res) => {
   // 제출 버튼 누르면 api로 날라온 값 :
-  let data = req.body;
+  // 데이터 정렬화 
+  // let data = req.body;
+  let data = {
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+  }
 
-  // data : { title: 'test2', content: 'test2', postNum: undefined}
+  // data : { title: 'test2', content: 'test2', Image: data , uid}
 
   // mongodb -> Counter Collections에 가서 name 이 Counter인거를 찾는다
   Counter.findOne({ name: "counter" })
     .exec()
     .then((counter) => {
-      // postNum -> 치환
+      // postNum ->  data.변수명 -> 집합 안에 해당 인자가 생성된다 !
       data.postNum = counter.postNum;
 
-      // Post collections 에 data 저장
-      const CommunityPost = new Post(data);
-      CommunityPost.save().then(() => {
-        // data 저장 성공하면 Counter collections에 가서 postNum + 1
-        Counter.updateOne({ name: "counter" }, { $inc: { postNum: 1 } }).then(
-          () => {
-            res.status(200).json({ success: true });
-          }
-        );
-      });
+      User.findOne({ uid: req.body.uid }).exec().then((userInfo) => {
+
+        data.author = userInfo._id;
+
+        console.log("data- final !!!!!!!" + JSON.stringify(data))
+
+        // Post collections 에 data 저장
+        const CommunityPost = new Post(data);
+        CommunityPost.save().then(() => {
+          // data 저장 성공하면 Counter collections에 가서 postNum + 1
+          Counter.updateOne({ name: "counter" }, { $inc: { postNum: 1 } }).then(
+            () => { res.status(200).json({ success: true }); }
+          );
+        });
+
+
+      })
+
     })
     .catch((err) => {
       res.status(400).json({ success: false });
@@ -38,6 +53,7 @@ router.post("/submit", (req, res) => {
 
 router.post("/list", (req, res) => {
   Post.find()
+    .populate("author")
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });
@@ -49,6 +65,7 @@ router.post("/list", (req, res) => {
 
 router.post("/detail", (req, res) => {
   Post.findOne({ postNum: Number(req.body.postNum) })
+    .populate("author")
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, post: doc });

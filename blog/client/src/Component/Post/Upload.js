@@ -3,6 +3,7 @@ import { UploadButtonDiv, UploadDiv, UploadForm } from "../../Style/UploadCSS.js
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ImageUpload from "./ImageUpload.js";
+import { useSelector } from "react-redux";
 
 
 const Upload = (props) => {
@@ -11,6 +12,19 @@ const Upload = (props) => {
   const [Content, setContent] = useState("");
   const [Image, setImage] = useState("");
   const navigate = useNavigate();
+
+  const user = useSelector((state => state.user))
+
+  useEffect(() => {
+    if (!user.accessToken) {
+      navigate("/login");
+      alert("로그인한 회원만 글을 작성할 수 있습니다.");
+
+    }
+
+
+  }, [])
+
 
 
   const onSubmit = (e) => {
@@ -25,12 +39,13 @@ const Upload = (props) => {
       title: Title,
       content: Content,
       image: Image,
+      uid: user.uid,
     };
 
     axios.post("/api/post/submit", body).then((response) => {
       if (response.data.success) {
         alert("글 작성이 완료 되었습니다.")
-        navigate("/");
+        navigate("/list");
       }
       else {
         alert("글 작성이 실패 되었습니다.")
@@ -63,7 +78,7 @@ const Upload = (props) => {
             setTitle(e.currentTarget.value);
           }}
         />
-        
+
         <ImageUpload setImage={setImage}></ImageUpload>
 
         <label >내용</label>
