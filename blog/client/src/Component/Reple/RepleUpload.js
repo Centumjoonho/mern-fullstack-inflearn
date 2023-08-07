@@ -11,13 +11,22 @@ const RepleUpload = (props) => {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
+        if (!Reple) {
+            return alert("댓글 내용을 입력하세요");
+        }
+
         let body = {
             reple: Reple,
             uid: user.uid,
             postId: props.postId
         }
         axios.post('/api/reple/submit', body).then((response) => {
-
+            if (response.data.success) {
+                alert("댓글 작성이 성공하였습니다.")
+            }
+            else {
+                alert("댓글 작성이 성공하였습니다.")
+            }
         })
 
     }
