@@ -31,8 +31,6 @@ router.post("/submit", (req, res) => {
 
         data.author = userInfo._id;
 
-        console.log("data- final !!!!!!!" + JSON.stringify(data))
-
         // Post collections 에 data 저장
         const CommunityPost = new Post(data);
         CommunityPost.save().then(() => {

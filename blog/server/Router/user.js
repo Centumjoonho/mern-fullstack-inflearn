@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { Post } = require("../Model/Post.js");
 const { Counter } = require("../Model/Counter.js");
 const { User } = require("../Model/User.js");
 
@@ -27,5 +26,19 @@ router.post('/register', (req, res) => {
 
 })
 
+router.post('/name_check', (req, res) => {
+    User.findOne({ displayName: req.body.displayName }).exec().then((doc) => {
+        // 등록 안되어 있을때
+        let check = true;
+        if (doc) {
+            //등록 되어 있을때 
+            check = false;
+        }
+        res.status(200).json({ success: true, check });
+    }).catch(err => {
+        console.error(err);
+        res.status(400).json({ success: false, message: err.message });
+    })
+});
 
 module.exports = router;

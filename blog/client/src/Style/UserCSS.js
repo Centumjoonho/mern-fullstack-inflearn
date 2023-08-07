@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const LoginDiv = styled.div`
-    width: 50%;
+    width: 60%;
     max-width: 360px;
     margin: 0 auto;
     margin-top: 5rem;
@@ -15,6 +15,7 @@ const LoginDiv = styled.div`
         label{
             font-weight: bold;
         }
+        
         input{
             border-radius: 10px;
             border : 1px solid #c6c6c6;
@@ -25,6 +26,8 @@ const LoginDiv = styled.div`
             &focus {
                 outline : none;
             }
+
+            
         }
         button { 
             border-radius: 15px;
@@ -44,14 +47,44 @@ const LoginDiv = styled.div`
             font-weight: bold;
             color:#ff4f4a;
             margin: 0 auto;
-            margin-top: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
 
         }
+        div{
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+
+
+            input{
+                max-width: 150px;
+            }
+    
+            button{
+                margin: 0 auto;
+                margin-bottom: 10px;
+                margin-left: 10px;
+
+            }
+        }
         @media (max-width : 756px){
-            width: 100%;
+            width: 80%;
+        }
+        @media (max-width: 480px) {
+            /* Set a minimum width for the form */
+            min-width: 280px;
         }
     }
 `;
 
 
-export default LoginDiv;
+const NameDiv = styled.div`
+   
+    
+`;
+
+
+export { LoginDiv, NameDiv };

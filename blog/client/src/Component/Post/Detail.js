@@ -1,45 +1,16 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect, React, useState } from "react";
+import React from "react";
 import axios from "axios";
-import { Spinner } from "react-bootstrap";
-import { Post, PostDiv, SpinnerDiv, BtnDiv } from "../../Style/PostDetailCSS";
+import { PostDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
 
-function Detail() {
+function Detail(props) {
     // 경로 상 존재하는 postNum 변수 값(string)
     let params = useParams();
 
-    const [PostInfo, setPostInfo] = useState({});
-
-    const [Flag, setFlag] = useState(false);
-
     const navigate = useNavigate();
 
-    useEffect(() => {
-        let body = {
-            postNum: params.postNum,
-        };
-
-        axios
-            .post("/api/post/detail", body)
-            .then((response) => {
-                if (response.data.success === true) {
-                    console.log(response.data.post);
-                    setPostInfo(response.data.post);
-                    setFlag(true);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
-    }, [params.postNum]);
-
-    useEffect(() => {
-
-    }, [PostInfo]);
-
     const DeleteHandler = () => {
-        if (window.confirm("Are you sure you want to delete ?")) {
+        if (window.confirm("정말 해당 내용을 삭제하시겠습니까")) {
             let body = {
                 postNum: params.postNum,
             };
@@ -61,21 +32,23 @@ function Detail() {
 
     return (
         <PostDiv>
-            {Flag ? (
-                <>
-                    <Post>
-                        <h1>{PostInfo.title}</h1>
-                        {PostInfo.image ? (
-                            <img
-                                src={PostInfo.image}
-                                alt="upload_image"
-                            />
-                        ) : null}
-                        <p>{PostInfo.content}</p>
-                    </Post>
 
+            <>
+                <Post>
+                    <h1>{props.PostInfo.title}</h1>
+
+                    {props.PostInfo.image ? (
+                        <img
+                            src={props.PostInfo.image}
+                            alt="upload_image"
+                        />
+                    ) : null}
+                    <p>{props.PostInfo.content}</p>
+                    <p>작성자  {props.PostInfo.author.displayName}</p>
+                </Post>
+                {props.Author ? (
                     <BtnDiv>
-                        <Link to={`/edit/${PostInfo.postNum}`}>
+                        <Link to={`/edit/${props.PostInfo.postNum}`}>
                             <button className="edit"> 수정</button>
                         </Link>
 
@@ -88,15 +61,10 @@ function Detail() {
                             {" "}
                             삭제
                         </button>
-                    </BtnDiv>
-                </>
-            ) : (
-                <SpinnerDiv>
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden"> Loading... </span>
-                    </Spinner>
-                </SpinnerDiv>
-            )}
+                    </BtnDiv>) : (<BtnDiv><button onClick={() => { navigate("/login"); }}>로그인</button></BtnDiv>)}
+
+            </>
+
         </PostDiv>
     );
 }
