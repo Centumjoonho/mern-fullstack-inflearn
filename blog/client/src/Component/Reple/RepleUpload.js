@@ -23,6 +23,7 @@ const RepleUpload = (props) => {
         axios.post('/api/reple/submit', body).then((response) => {
             if (response.data.success) {
                 alert("댓글 작성이 성공하였습니다.")
+                window.location.reload();
             }
             else {
                 alert("댓글 작성이 성공하였습니다.")

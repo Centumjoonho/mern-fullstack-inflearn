@@ -2,10 +2,13 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import { PostDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
+import { useSelector } from "react-redux";
 
 function Detail(props) {
     // 경로 상 존재하는 postNum 변수 값(string)
     let params = useParams();
+
+    const user = useSelector(state => state.user);
 
     const navigate = useNavigate();
 
@@ -46,7 +49,7 @@ function Detail(props) {
                     <p>{props.PostInfo.content}</p>
                     <p>작성자  {props.PostInfo.author.displayName}</p>
                 </Post>
-                {props.Author ? (
+                {user.accessToken ? (
                     <BtnDiv>
                         <Link to={`/edit/${props.PostInfo.postNum}`}>
                             <button className="edit"> 수정</button>

@@ -103,7 +103,7 @@ const Register = () => {
 
         axios.post('/api/user/name_check', body).then((response) => {
             if (response.data.success) {
-                console.log(response.data.check);
+
                 setNameCheck(response.data.check);
                 if (!NameCheck) {
 
