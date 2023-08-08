@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { LoginDiv, NameDiv } from '../../Style/UserCSS'
+import { LoginDiv } from '../../Style/UserCSS'
 import firebase from '../../firebase'
 
 import axios from 'axios'

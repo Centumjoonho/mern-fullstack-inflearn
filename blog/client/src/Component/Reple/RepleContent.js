@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RepleContentDiv, RepleUploadDiv, RepleEditDiv } from '../../Style/RepleCSS'
+import { RepleContentDiv, RepleEditDiv } from '../../Style/RepleCSS'
 import { useClickAway } from "@uidotdev/usehooks";
 import { useSelector } from 'react-redux';
 import { BsThreeDots } from 'react-icons/bs';
@@ -20,16 +20,17 @@ const RepleContent = (props) => {
         let body = {
             reple: Reple,
             uid: user.uid,
-            postId: props.postId
+            postId: props.repleList.postId,
+            repleId: props.repleList._id,
         }
-        axios.post('/api/reple/submit', body).then((response) => {
+        axios.post('/api/reple/edit', body).then((response) => {
             if (response.data.success) {
-                alert("댓글 작성이 성공하였습니다.")
-                window.location.reload();
+                alert("댓글 수정이 성공하였습니다.")
             }
             else {
-                alert("댓글 작성이 성공하였습니다.")
+                alert("댓글 수정이 실패하였습니다.")
             }
+            return window.location.reload();
         })
 
     }
