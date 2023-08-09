@@ -27,7 +27,7 @@ const RepleList = (props) => {
         <RepleListDiv>
             {RepleList.map((repleList, idx) => {
                 return (
-                    <RepleContent repleList={repleList} idx={idx} />
+                    <RepleContent key={idx} repleList={repleList} />
                 );
             })}
         </RepleListDiv>

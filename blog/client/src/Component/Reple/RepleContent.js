@@ -8,7 +8,7 @@ import axios from 'axios';
 const RepleContent = (props) => {
 
 
-    const [Reple, setReple] = useState("")
+    const [Reple, setReple] = useState(props.repleList.reple)
 
     const SubmitHandler = (e) => {
         e.preventDefault();
@@ -35,7 +35,23 @@ const RepleContent = (props) => {
 
     }
 
+    const DeleteHandler = (e) => {
+        e.preventDefault()
+        if (window.confirm('정말로 댓글을 삭제하시겠습니까?')) {
 
+            let body = {
+                repleId: props.repleList._id,
+            };
+            axios.post('/api/reple/delete', body).then((response) => {
+                if (response.data.success) {
+                    alert(`댓글이 삭제되었습니다.`)
+                }
+            }).catch((err) => {
+                alert(`삭제에 실패하였습니다.`);
+            });
+            return window.location.reload();
+        }
+    }
 
     const user = useSelector(state => state.user);
     const [EditFlag, setEditFlag] = useState(false)
@@ -61,8 +77,8 @@ const RepleContent = (props) => {
                             <span onClick={handleOpenModal}><BsThreeDots /></span>
                             {isOpen && (
                                 <div className='modalDiv' ref={ref}>
-                                    <p onClick={() => { setEditFlag(true); setIsOpen(false); setReple(props.repleList.reple) }}>수정</p>
-                                    <p className='delete'>삭제</p>
+                                    <p onClick={() => { setEditFlag(true); setIsOpen(false); }}>수정</p>
+                                    <p className='delete' onClick={(e) => { DeleteHandler(e) }}>삭제</p>
                                 </div>
                             )}
 
