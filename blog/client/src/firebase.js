@@ -7,12 +7,7 @@ import "firebase/compat/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
 
-    apiKey: "AIzaSyB7JhXOONqImUkhcz_1D1Xg5_BxvTEDGbo",
-    authDomain: "centum-community.firebaseapp.com",
-    projectId: "centum-community",
-    storageBucket: "centum-community.appspot.com",
-    messagingSenderId: "657191542877",
-    appId: "1:657191542877:web:cd2ae3b9539add05b86db4"
+
 
 };
 
