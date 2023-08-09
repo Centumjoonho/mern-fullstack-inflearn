@@ -64,14 +64,17 @@ router.post('/edit', (req, res) => {
 
 
 router.post("/delete", (req, res) => {
-    console.log("req.body.repleId" + req.body.repleId)
     Reple.deleteOne({ _id: req.body.repleId })
         .exec()
         .then(() => {
-            res.status(200).json({ success: true });
-        })
-        .catch((err) => {
-            res.status(400).json({ success: false });
+            Post.findOneAndUpdate({ _id: req.body.postId }, { $inc: { repleNum: -1 } })
+                .exec().then(() => {
+                    return res.status(200).json({ success: true });
+                }).catch((err) => {
+                    return res.status(400).json({ success: false });
+
+                })
+
         });
 });
 

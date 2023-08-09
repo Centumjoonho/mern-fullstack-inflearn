@@ -31,11 +31,12 @@ function App() {
 
   const dispatch = useDispatch();
   //저장 되어 있는  state를 가져올 수 있다
-  // const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user)
 
   useEffect(() => {
     // 로그인이나 로그아웃을 하면 값 확인 , 그외에는 값 null
     firebase.auth().onAuthStateChanged((userInfo) => {
+      console.log(userInfo)
       if (userInfo) {
 
         // 데이터 값 정렬화 하는게 좋다고 한다 ! 
@@ -58,6 +59,9 @@ function App() {
 
   }, [])
 
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
 
 

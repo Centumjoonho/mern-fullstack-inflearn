@@ -50,17 +50,22 @@ const Register = () => {
 
                 user.updateProfile({
                     displayName: Name,
+                    photoURL: 'https://kr.object.ncloudstorage.com/centum-community/post/free-icon-user-5264565.png',
                 })
 
                 var email = user.multiFactor.user.email;
 
                 var uid = user.multiFactor.user.uid;
 
+                var photoURL = 'https://kr.object.ncloudstorage.com/centum-community/post/free-icon-user-5264565.png';
+
                 // ...
                 let body = {
                     email: email,
                     displayName: Name,
                     uid: uid,
+                    photoURL: photoURL,
+
                 }
 
                 axios.post('/api/user/register', body).then((response) => {
@@ -89,6 +94,7 @@ const Register = () => {
     }
 
     const NameCheckFunc = (e) => {
+
         e.preventDefault();
 
         setNameInfo("");
@@ -105,7 +111,8 @@ const Register = () => {
             if (response.data.success) {
 
                 setNameCheck(response.data.check);
-                if (!NameCheck) {
+
+                if (!response.data.check) {
 
                     setNameInfo("이미 등록된 닉네임입니다.");
 

@@ -1,8 +1,9 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { PostDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
 import { useSelector } from "react-redux";
+import Avatar from 'react-avatar';
 
 function Detail(props) {
     // 경로 상 존재하는 postNum 변수 값(string)
@@ -32,14 +33,23 @@ function Detail(props) {
                 });
         }
     };
+    useEffect(() => {
+
+        console.log(props.PostInfo)
+
+    }, [])
+
 
     return (
         <PostDiv>
 
             <>
                 <Post>
-                    <h1>{props.PostInfo.title}</h1>
-
+                    <h2>{props.PostInfo.title}</h2>
+                    <div className="author">
+                        <Avatar size="30" round={true} src={props.PostInfo.author.photoURL} />
+                        {props.PostInfo.author.displayName}
+                    </div>
                     {props.PostInfo.image ? (
                         <img
                             src={props.PostInfo.image}
@@ -47,7 +57,7 @@ function Detail(props) {
                         />
                     ) : null}
                     <p>{props.PostInfo.content}</p>
-                    <p>작성자  {props.PostInfo.author.displayName}</p>
+
                 </Post>
                 {user.accessToken ? (
                     <BtnDiv>

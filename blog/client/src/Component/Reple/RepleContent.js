@@ -37,19 +37,22 @@ const RepleContent = (props) => {
 
     const DeleteHandler = (e) => {
         e.preventDefault()
+
         if (window.confirm('정말로 댓글을 삭제하시겠습니까?')) {
 
             let body = {
                 repleId: props.repleList._id,
+                postId: props.repleList.postId,
             };
             axios.post('/api/reple/delete', body).then((response) => {
                 if (response.data.success) {
-                    alert(`댓글이 삭제되었습니다.`)
+                    alert('댓글이 삭제되었습니다.')
+                    window.location.reload();
                 }
             }).catch((err) => {
-                alert(`삭제에 실패하였습니다.`);
+                alert('댓글 삭제에 실패하였습니다.');
             });
-            return window.location.reload();
+
         }
     }
 
