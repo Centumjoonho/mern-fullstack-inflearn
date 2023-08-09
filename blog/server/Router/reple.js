@@ -27,6 +27,8 @@ router.post('/submit', (req, res) => {
         })
     });
 })
+
+
 router.post('/reples', (req, res) => {
     Reple.find({ postId: req.body.postId })
         .populate("author")
@@ -41,6 +43,23 @@ router.post('/reples', (req, res) => {
                 success: false,
             });
         });
+});
+
+router.post('/edit', (req, res) => {
+
+    let data = {
+        postId: req.body.postId,
+        reple: req.body.reple,
+        uid: req.body.uid,
+    }
+
+    Reple.findOneAndUpdate({ _id: req.body.repleId }, { $set: data }).exec().then(() => {
+
+        return res.status(200).json({ success: true });
+
+    }).catch((err) => {
+        return res.status(400).json({ success: false });
+    })
 });
 
 module.exports = router;
