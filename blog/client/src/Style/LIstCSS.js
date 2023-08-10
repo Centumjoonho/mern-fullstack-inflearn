@@ -35,6 +35,13 @@ const ListItem = styled.div`
         margin: 0 20px 20px 0;
     
       }
+      .moment{
+        font-size: 12px;
+        font-weight: bold;
+        color: darkgrey;
+        display: flex;
+        flex-direction: row-reverse;
+      }
 
 `;
 

@@ -24,6 +24,7 @@ const ListPage = () => {
 
 
     return (
+
         <div><List PostList={PostList} /></div>
     )
 }

@@ -4,6 +4,9 @@ import axios from "axios";
 import { PostDiv, Post, BtnDiv } from "../../Style/PostDetailCSS";
 import { useSelector } from "react-redux";
 import Avatar from 'react-avatar';
+import Download from "./Download";
+import moment from "moment";
+import 'moment/locale/ko'
 
 function Detail(props) {
     // 경로 상 존재하는 postNum 변수 값(string)
@@ -33,12 +36,17 @@ function Detail(props) {
                 });
         }
     };
-    useEffect(() => {
 
-        console.log(props.PostInfo)
-        console.log(props.PostInfo.author.photoURL)
+    const setTime = (createAt, updateAt) => {
+        if (createAt !== updateAt) {
 
-    }, [])
+            return <p className='moment'>{moment(updateAt).format('YYYY년 MMMM Do a hh:mm  (수정됨)')}</p>
+        }
+        else {
+            return <p className='moment'>{moment(createAt).format('YYYY년 MMMM Do a hh:mm ')}</p>
+        }
+    }
+
 
 
     return (
@@ -57,7 +65,11 @@ function Detail(props) {
                             alt="upload_image"
                         />
                     ) : null}
-                    <p>{props.PostInfo.content}</p>
+                    <p className="content">{props.PostInfo.content}</p>
+
+                    <Download filePath={props.PostInfo.author.photoURL} />
+
+                    {setTime(props.PostInfo.createdAt, props.PostInfo.updatedAt)}
 
                 </Post>
                 {user.accessToken ? (

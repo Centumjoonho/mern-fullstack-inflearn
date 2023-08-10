@@ -29,7 +29,7 @@ const Post = styled.div`
     font-weight: bold;
   }
   p {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
   img {
     width: 80%;
@@ -41,6 +41,14 @@ const Post = styled.div`
     margin: 0 20px 20px 0;
 
   }
+  .moment{
+    font-size: 12px;
+    font-weight: bold;
+    color: darkgrey;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
 `;
 
 const BtnDiv = styled.div`
