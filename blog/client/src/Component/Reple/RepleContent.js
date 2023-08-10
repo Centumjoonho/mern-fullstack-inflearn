@@ -4,6 +4,7 @@ import { useClickAway } from "@uidotdev/usehooks";
 import { useSelector } from 'react-redux';
 import { BsThreeDots } from 'react-icons/bs';
 import axios from 'axios';
+import Avatar from 'react-avatar';
 
 const RepleContent = (props) => {
 
@@ -73,8 +74,10 @@ const RepleContent = (props) => {
     return (
         <div>
             <RepleContentDiv key={props.idx}>
+
                 <div className='author'>
-                    <p>{props.repleList.author.displayName}</p>
+                    <Avatar size="25" round={true} src={props.repleList.author.photoURL} style={{ border: "0.5px solid black" }} />
+                    <p style={{ margin: "5px" }}>{props.repleList.author.displayName}</p>
                     {props.repleList.author.uid === user.uid && (
                         <div className='modalControl'>
                             <span onClick={handleOpenModal}><BsThreeDots /></span>

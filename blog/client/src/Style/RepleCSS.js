@@ -115,14 +115,16 @@ const RepleContentDiv = styled.div`
     padding: 20PX 10PX;
     margin-bottom: 10PX;
     .author {
-        display: flex;
-        margin-bottom: 5px;
-        justify-content: space-between;
+        display: grid;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        grid-template-columns: 0.5fr 9.5fr 0fr;
         align-items: center;
-        p{
+        p{  
             font-size: 12px;
             font-weight: bold;
             color: darkgrey;
+            margin-top:4px; 
         }
         .modalControl {
             cursor: pointer;

@@ -125,7 +125,7 @@ router.post("/delete", (req, res) => {
 // 미들웨어 사용법 기억하기 ! 
 router.post(
   "/image/upload",
-  setUpload("centum-community"),
+  setUpload("centum-community", "post/"),
   (req, res, next) => {
     console.log(res.req) // setUpload 함수로 받아오는 값 전부 다 
     res.status(200).json({ success: true, filePath: res.req.file.location });

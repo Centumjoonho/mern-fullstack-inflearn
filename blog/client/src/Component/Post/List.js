@@ -1,42 +1,13 @@
-import { React, useState, useEffect } from 'react'
-import axios from "axios"
+import { React } from 'react'
 import { Link } from 'react-router-dom';
 import { ListDiv, ListItem, ListButton, ListLink } from '../../Style/LIstCSS'
-import { useSelector } from 'react-redux';
-
-
-
+import Avatar from 'react-avatar';
+import moment from 'moment'
+import 'moment/locale/ko'
 
 
 const List = (props) => {
     // const user = useSelector(state => state.user)
-
-    const [PostList, setPostList] = useState([]);
-    useEffect(() => {
-
-        // if (user.accessToken) {
-        // 지정된 ID를 가진 유저에 대한 요청
-        axios.post('/api/post/list').then((response) => {
-            // 성공 핸들링
-            console.log(response.data);
-
-            console.log(response.data.postList);
-
-            if (response.data.success) {
-                setPostList([...response.data.postList])
-
-            }
-
-
-        }).catch((err) => {
-            console.log(err);
-        });
-
-        // }
-
-
-    }, [])
-
 
     return (
         <>
@@ -44,15 +15,18 @@ const List = (props) => {
             <ListDiv>
                 <h2 > 게시판 목록 </h2>
 
-                {PostList.map((post, index) => {
-
-
+                {props.PostList.map((post, index) => {
                     return (
                         <ListItem key={index}>
                             <Link to={`/post/${post.postNum}`}>
                                 <p className='title'> {post.title}</p>
-                                <p className='author'> {post.author.displayName}</p>
+                                <div className="author">
+                                    <Avatar size="25" round={true} src={post.author.photoURL} style={{ border: "0.5px solid black" }} />
+                                    <p style={{ margin: "5px" }}>{post.author.displayName}</p>
+                                </div>
+
                                 <p className='content'> {post.content}</p>
+                                <p>{moment(post.createdAt).format('YYYY년 MMMM Do , hh:mm:ss ')}</p>
                             </Link>
                         </ListItem>
                     )

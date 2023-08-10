@@ -36,6 +36,7 @@ function Detail(props) {
     useEffect(() => {
 
         console.log(props.PostInfo)
+        console.log(props.PostInfo.author.photoURL)
 
     }, [])
 
@@ -47,8 +48,8 @@ function Detail(props) {
                 <Post>
                     <h2>{props.PostInfo.title}</h2>
                     <div className="author">
-                        <Avatar size="30" round={true} src={props.PostInfo.author.photoURL} />
-                        {props.PostInfo.author.displayName}
+                        <Avatar size="25" round={true} src={props.PostInfo.author.photoURL} style={{ border: "0.5px solid black" }} />
+                        <p style={{ margin: "5px" }}>{props.PostInfo.author.displayName}</p>
                     </div>
                     {props.PostInfo.image ? (
                         <img

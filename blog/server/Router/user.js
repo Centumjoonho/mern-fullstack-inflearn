@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { Counter } = require("../Model/Counter.js");
 const { User } = require("../Model/User.js");
+const setUpload = require("../Util/upload.js");
 
 
 router.post('/register', (req, res) => {
@@ -40,5 +41,26 @@ router.post('/name_check', (req, res) => {
         res.status(400).json({ success: false, message: err.message });
     })
 });
+
+// 미들웨어 사용법 기억하기 ! 
+router.post(
+    '/image/profile',
+    setUpload("centum-community", "user/"),
+    (req, res, next) => {
+        res.status(200).json({ success: true, filePath: res.req.file.location });
+
+    });
+
+
+router.post(
+    '/image/profile/update', (req, res) => {
+        let data = { photoURL: req.body.photoURL, }
+        User.updateOne({ uid: req.body.uid }, { $set: data }).exec().then(() => {
+            res.status(200).json({ success: true });
+        }).catch(err => {
+            res.status(400).json({ error: err.message, success: false });
+        })
+
+    });
 
 module.exports = router;

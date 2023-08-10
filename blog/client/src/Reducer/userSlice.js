@@ -7,6 +7,7 @@ export const userSlice = createSlice({
         uid: "",
         accessToken: "",
         photoURL: "",
+        isLoading: false,
     },
     reducers: {
         loginUser: (state, action) => {
@@ -14,6 +15,7 @@ export const userSlice = createSlice({
             state.uid = action.payload.uid;
             state.accessToken = action.payload.accessToken;
             state.photoURL = action.payload.photoURL;
+            state.isLoading = true;
 
         },
         clearUser: (state) => {

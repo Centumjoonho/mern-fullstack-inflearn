@@ -19,8 +19,7 @@ const S3 = new S3Client({
 });
 
 
-function setUpload(Bucket) {
-
+function setUpload(Bucket, url) {
     const upload = multer({
         storage: multerS3({
             s3: S3,
@@ -28,7 +27,7 @@ function setUpload(Bucket) {
             acl: "public-read-write",
             key: function (req, file, cb) {
                 let extension = path.extname(file.originalname);
-                cb(null, "post/" + Date.now().toString() + extension);
+                cb(null, url + Date.now().toString() + extension);
             },
         }),
     }).single("file");

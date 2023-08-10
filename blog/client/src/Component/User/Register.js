@@ -57,14 +57,12 @@ const Register = () => {
 
                 var uid = user.multiFactor.user.uid;
 
-                var photoURL = 'https://kr.object.ncloudstorage.com/centum-community/post/free-icon-user-5264565.png';
-
                 // ...
                 let body = {
                     email: email,
                     displayName: Name,
                     uid: uid,
-                    photoURL: photoURL,
+                    photoURL: 'https://kr.object.ncloudstorage.com/centum-community/post/free-icon-user-5264565.png',
 
                 }
 

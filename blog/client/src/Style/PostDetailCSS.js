@@ -35,6 +35,12 @@ const Post = styled.div`
     width: 80%;
     height: auto;
   }
+  .author{
+    display: flex;
+    align-items: center;
+    margin: 0 20px 20px 0;
+
+  }
 `;
 
 const BtnDiv = styled.div`

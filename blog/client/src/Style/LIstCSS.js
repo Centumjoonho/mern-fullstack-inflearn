@@ -27,8 +27,14 @@ const ListItem = styled.div`
         .title{
             font-weight: bold;
             font-size: 1.3rem;
-        }
-    }
+          }
+      }
+      .author{
+        display: flex;
+        align-items: center;
+        margin: 0 20px 20px 0;
+    
+      }
 
 `;
 

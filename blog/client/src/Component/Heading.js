@@ -6,7 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
 import firebase from './../firebase';
 import { useNavigate } from 'react-router-dom';
-
+import { LuSettings } from 'react-icons/lu';
+import { BiDoorOpen } from 'react-icons/bi'
 
 
 const Heading = () => {
@@ -24,7 +25,7 @@ const Heading = () => {
 
         <Navbar expand="lg" bg='dark' variant='dark'  >
             <Container>
-                <Navbar.Brand href="/">Centum Joonho</Navbar.Brand>
+                <Navbar.Brand href="/" style={{ fontSize: "1.2rem" }}>Centum Joonho</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -42,14 +43,27 @@ const Heading = () => {
                 <Navbar.Collapse className='justify-content-end'>
 
                     {user.accessToken ? (
-                        <Navbar.Text
-                            style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px" }}
-                            onClick={() => { LogoutHandler() }}>
-                            <span style={{ marginRight: "20px", fontWeight: "bold", fontSize: "1.2rem", color: "yellowgreen" }}>{user.displayName}</span>
-                            LOGOUT</Navbar.Text>
+                        <>
+                            <Navbar.Text
+                                style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px" }}
+                                onClick={() => { LogoutHandler() }}>
+                                <span style={{ marginRight: "20px", fontWeight: "bold", fontSize: "1.2rem", color: "yellowgreen" }}>{user.displayName}</span>
+                                <span style={{ fontSize: "1.2rem" }}>LOGOUT</span>
+                            </Navbar.Text>
+                            <Navbar.Text
+                                style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px" }}>
+                                <Link to="/my_page">
+                                    <LuSettings style={{ marginLeft: "10px", fontSize: "1.4rem" }} />
+                                </Link>
+
+                            </Navbar.Text>
+                        </>
+
+
+
                     ) : (
                         <Link to="/login" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>
-                            LOGIN</Link>
+                            <BiDoorOpen style={{ fontSize: "1.5rem", marginRight: "2px" }} /> <span style={{ fontSize: "1.2rem" }}>LOG IN</span></Link>
                     )}
 
 

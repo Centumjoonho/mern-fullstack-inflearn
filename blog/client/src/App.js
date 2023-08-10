@@ -9,6 +9,8 @@ import Home from './Component/Home';
 import Login from './Component/User/Login';
 import Register from './Component/User/Register';
 import PostArea from './Component/Post/PostArea';
+import Mypage from './Component/User/Mypage';
+import ListPage from './Component/ListPage';
 
 //react-redux
 import { Counter } from './features/counter/Counter';
@@ -44,7 +46,8 @@ function App() {
 
           displayName: userInfo.multiFactor.user.displayName,
           uid: userInfo.multiFactor.user.uid,
-          accessToken: userInfo.multiFactor.user.accessToken
+          accessToken: userInfo.multiFactor.user.accessToken,
+          photoURL: userInfo.multiFactor.user.photoURL,
 
         };
         var loginData = loginUser(userData);
@@ -73,7 +76,7 @@ function App() {
 
         <Route path='/' element={<Home />} />
 
-        <Route path='/list' element={<List ContentList={ContentList} setContentList={setContentList} />} />
+        <Route path='/list' element={<ListPage />} />
 
         <Route path='/upload' element={<Upload ContentList={ContentList} setContentList={setContentList} />} />
 
@@ -85,6 +88,8 @@ function App() {
         <Route path='/login' element={<Login />} />
 
         <Route path='/register' element={<Register />} />
+
+        <Route path='/my_page' element={<Mypage />} />
 
         <Route path='/counter' element={<Counter />} />
 
