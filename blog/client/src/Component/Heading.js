@@ -51,9 +51,9 @@ const Heading = () => {
                                 <span style={{ fontSize: "1.2rem" }}>LOGOUT</span>
                             </Navbar.Text>
                             <Navbar.Text
-                                style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px" }}>
+                                style={{ color: "white", cursor: "pointer", textDecoration: "none", marginRight: "10px", padding: "0" }}>
                                 <Link to="/my_page">
-                                    <LuSettings style={{ marginLeft: "10px", fontSize: "1.4rem" }} />
+                                    <LuSettings style={{ fontSize: "1.8rem", marginBottom: "5px" }} />
                                 </Link>
 
                             </Navbar.Text>
@@ -62,8 +62,8 @@ const Heading = () => {
 
 
                     ) : (
-                        <Link to="/login" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>
-                            <BiDoorOpen style={{ fontSize: "1.5rem", marginRight: "2px" }} /> <span style={{ fontSize: "1.2rem" }}>LOG IN</span></Link>
+                        <Link to="/login" style={{ color: "white", textDecoration: "none", padding: "0", marginRight: "10px" }}>
+                            <BiDoorOpen style={{ fontSize: "1.5rem", marginBottom: "5px" }} /> <span style={{ fontSize: "1.2rem" }}>LOG IN</span></Link>
                     )}
 
 
