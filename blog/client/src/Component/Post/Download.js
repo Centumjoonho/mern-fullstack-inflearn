@@ -6,7 +6,7 @@ const Download = ({ filePath }) => {
 
     return (
         <div>
-            <a href={{ filePath }} download={downloadFileName}>
+            <a href={filePath} >
                 {downloadFileName}
             </a>
         </div>

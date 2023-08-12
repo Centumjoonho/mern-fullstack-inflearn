@@ -46,6 +46,9 @@ function Detail(props) {
             return <p className='moment'>{moment(createAt).format('YYYY년 MMMM Do a hh:mm ')}</p>
         }
     }
+    useEffect(() => {
+        console.log(props.PostInfo.image)
+    }, [])
 
 
 
@@ -60,14 +63,18 @@ function Detail(props) {
                         <p style={{ margin: "5px" }}>{props.PostInfo.author.displayName}</p>
                     </div>
                     {props.PostInfo.image ? (
-                        <img
-                            src={props.PostInfo.image}
-                            alt="upload_image"
-                        />
+                        <>
+                            <img
+                                src={props.PostInfo.image}
+                                alt="upload_image"
+                            />
+                            <Download filePath={props.PostInfo.image} />
+                        </>
+
                     ) : null}
                     <p className="content">{props.PostInfo.content}</p>
 
-                    <Download filePath={props.PostInfo.author.photoURL} />
+
 
                     {setTime(props.PostInfo.createdAt, props.PostInfo.updatedAt)}
 
