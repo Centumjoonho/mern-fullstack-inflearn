@@ -4,7 +4,7 @@ import { ListDiv, ListItem, ListButton, ListLink } from '../../Style/LIstCSS'
 import Avatar from 'react-avatar';
 import moment from 'moment'
 import 'moment/locale/ko'
-
+import { useNavigate } from 'react-router-dom';
 
 const List = (props) => {
     // const user = useSelector(state => state.user)
@@ -17,14 +17,17 @@ const List = (props) => {
             return <p className='moment'>{moment(createAt).format('YYYY년 MMMM Do a hh:mm ')}</p>
         }
     }
-
+    const navigate = useNavigate();
 
 
     return (
         <>
 
             <ListDiv>
-                <h2 > 게시판 목록 </h2>
+                <div className='title_upload'>
+                    <h2 > 게시판 목록 </h2>
+                    <ListButton onClick={() => { navigate('/upload') }}>UPLOAD</ListButton>
+                </div>
 
                 {props.PostList.map((post, index) => {
                     return (
@@ -42,7 +45,7 @@ const List = (props) => {
                         </ListItem>
                     )
                 })}
-                <ListButton><ListLink to={`/upload`} >UPLOAD</ListLink></ListButton>
+
 
             </ListDiv>
 

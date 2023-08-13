@@ -6,6 +6,12 @@ padding-top: 1rem;
 padding-bottom: 1rem;
 max-width: 756px;
 margin: 0 auto !important;
+.title_upload{
+  display: grid;
+  min-width: 40%;
+  grid-template-columns: 8fr 2fr;
+  grid-template-rows: auto;
+}
 @media (max-width: 756px){
     width: 90%;
 }
@@ -47,11 +53,12 @@ const ListItem = styled.div`
 
 // 스타일드 컴포넌트로 버튼 스타일링하기
 const ListButton = styled.button`
-  background-color: #007bff;
+  background-color: #054280;
+  height: 50px;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;

@@ -58,10 +58,18 @@ router.post("/list", (req, res) => {
   else {
     sort.repleNum = -1;
   }
+  console.log(req.body.searchTerm);
 
-  Post.find()
+  Post.find({
+    $or: [
+      { title: { $regex: req.body.searchTerm } },
+      { content: { $regex: req.body.searchTerm } },
+    ],
+  })
     .populate("author")
     .sort(sort)
+    .skip(req.body.skip)
+    .limit(5) // 한번에 찾을 doc 숫자
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });
