@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import { ListDiv, ListItem, ListButton, ListLink } from '../../Style/LIstCSS'
+import { ListDiv, ListItem, ListButton } from '../../Style/LIstCSS'
 import Avatar from 'react-avatar';
 import moment from 'moment'
 import 'moment/locale/ko'
