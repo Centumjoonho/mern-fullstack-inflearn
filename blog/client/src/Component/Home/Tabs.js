@@ -91,161 +91,22 @@ function Tabs() {
                                     >
                                         <TabPane tabId="iconPills1">
                                             <p>
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at. So when you get something that has
-                                                the name Kanye West on it, it’s supposed to be pushing
-                                                the furthest possibilities. I will be the leader of a
-                                                company that ends up being worth billions of dollars,
-                                                because I got the answers. I understand culture. I am
-                                                the nucleus.
+                                                풀스택 개발자를 꿈 꾸는 이준호의 홈페이지 입니다.
                                             </p>
                                         </TabPane>
                                         <TabPane tabId="iconPills2">
                                             <p>
-                                                I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture. I am the nucleus. I think that’s a
-                                                responsibility that I have, to push possibilities, to
-                                                show people, this is the level that things could be at.
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at.
+                                                재영소프트 센텀 연구소에서 근무 중입니다.
                                             </p>
                                         </TabPane>
                                         <TabPane tabId="iconPills3">
                                             <p>
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at. So when you get something that has
-                                                the name Kanye West on it, it’s supposed to be pushing
-                                                the furthest possibilities. I will be the leader of a
-                                                company that ends up being worth billions of dollars,
-                                                because I got the answers. I understand culture. I am
-                                                the nucleus.
+                                                포스팅을 위해서는 회원가입 및 로그인을 부탁드립니다.
                                             </p>
                                         </TabPane>
                                         <TabPane tabId="iconPills4">
                                             <p>
-                                                "I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture. I am the nucleus. I think that’s a
-                                                responsibility that I have, to push possibilities, to
-                                                show people, this is the level that things could be at."
-                                            </p>
-                                        </TabPane>
-                                    </TabContent>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                        <Col className="ml-auto mr-auto" md="10" xl="6">
-                            <p className="category">Job</p>
-                            <Card>
-                                <CardHeader>
-                                    <Nav
-                                        className="nav-tabs-neutral justify-content-center"
-                                        data-background-color="blue"
-                                        role="tablist"
-                                        tabs
-                                    >
-                                        <NavItem>
-                                            <NavLink
-                                                className={pills === "1" ? "active" : ""}
-                                                href="#pablo"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setPills("1");
-                                                }}
-                                            >
-                                                Home
-                                            </NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                            <NavLink
-                                                className={pills === "2" ? "active" : ""}
-                                                href="#pablo"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setPills("2");
-                                                }}
-                                            >
-                                                Profile
-                                            </NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                            <NavLink
-                                                className={pills === "3" ? "active" : ""}
-                                                href="#pablo"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setPills("3");
-                                                }}
-                                            >
-                                                Messages
-                                            </NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                            <NavLink
-                                                className={pills === "4" ? "active" : ""}
-                                                href="#pablo"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setPills("4");
-                                                }}
-                                            >
-                                                Settings
-                                            </NavLink>
-                                        </NavItem>
-                                    </Nav>
-                                </CardHeader>
-                                <CardBody>
-                                    <TabContent
-                                        className="text-center"
-                                        activeTab={"pills" + pills}
-                                    >
-                                        <TabPane tabId="pills1">
-                                            <p>
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at. So when you get something that has
-                                                the name Kanye West on it, it’s supposed to be pushing
-                                                the furthest possibilities. I will be the leader of a
-                                                company that ends up being worth billions of dollars,
-                                                because I got the answers. I understand culture. I am
-                                                the nucleus.
-                                            </p>
-                                        </TabPane>
-                                        <TabPane tabId="pills2">
-                                            <p>
-                                                I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture. I am the nucleus. I think that’s a
-                                                responsibility that I have, to push possibilities, to
-                                                show people, this is the level that things could be at.
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at.
-                                            </p>
-                                        </TabPane>
-                                        <TabPane tabId="pills3">
-                                            <p>
-                                                I think that’s a responsibility that I have, to push
-                                                possibilities, to show people, this is the level that
-                                                things could be at. So when you get something that has
-                                                the name Kanye West on it, it’s supposed to be pushing
-                                                the furthest possibilities. I will be the leader of a
-                                                company that ends up being worth billions of dollars,
-                                                because I got the answers. I understand culture. I am
-                                                the nucleus.
-                                            </p>
-                                        </TabPane>
-                                        <TabPane tabId="pills4">
-                                            <p>
-                                                "I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture. I am the nucleus. I think that’s a
-                                                responsibility that I have, to push possibilities, to
-                                                show people, this is the level that things could be at."
+                                                설정에 들어가면 본인의 프로필을 수정할 수 있습니다.
                                             </p>
                                         </TabPane>
                                     </TabContent>

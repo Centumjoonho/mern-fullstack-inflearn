@@ -47,7 +47,7 @@ function Detail(props) {
         }
     }
     useEffect(() => {
-        console.log(props.PostInfo.image)
+        console.log(props.PostInfo)
     }, [])
 
 

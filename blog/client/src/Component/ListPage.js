@@ -33,7 +33,6 @@ const ListPage = () => {
                     setLoadMore(false);
                 }
             }
-            console.log(PostList)
         }).catch((err) => {
             console.log(err);
         });
@@ -61,7 +60,7 @@ const ListPage = () => {
                     setLoadMore(false);
                 }
             }
-            console.log(PostList)
+
         }).catch((err) => {
             console.log(err);
         });
@@ -70,15 +69,13 @@ const ListPage = () => {
 
     useEffect(() => {
         getPostList();
+
     }, [Sort])
 
     const SearchHandler = () => {
 
         getPostList();
     }
-
-
-
     return (
 
         <div>

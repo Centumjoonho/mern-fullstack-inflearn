@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ImageUpload from "./ImageUpload.js";
 import { useSelector } from "react-redux";
+import Secret from "./Secret.js";
 
 
 const Upload = (props) => {
@@ -11,6 +12,8 @@ const Upload = (props) => {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
   const [Image, setImage] = useState("");
+  const [Secret_Check, setSecret_Check] = useState(false);
+  // const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
 
   const user = useSelector((state => state.user))
@@ -25,7 +28,9 @@ const Upload = (props) => {
 
   }, [])
 
-
+  const handleOptionChange = () => {
+    setSecret_Check(true);
+  };
 
   const onSubmit = (e) => {
 
@@ -40,6 +45,7 @@ const Upload = (props) => {
       content: Content,
       image: Image,
       uid: user.uid,
+      secret: Secret_Check,
     };
 
     axios.post("/api/post/submit", body).then((response) => {
@@ -66,7 +72,9 @@ const Upload = (props) => {
   useEffect(() => { }, [/*useEffect가 실행될 조건*/ Content]);
 
   return (
+
     <UploadDiv>
+
       <UploadForm>
         <h3>Upload</h3>
         <label >제목</label>
@@ -81,8 +89,19 @@ const Upload = (props) => {
 
         <ImageUpload setImage={setImage}></ImageUpload>
 
-        <label >내용</label>
+        <div>
+          <input
+            type="radio"
+            value="option1"
+            onChange={handleOptionChange}
+            style={{ marginRight: "5px" }}
+          />
+          <label>
+            비밀글 작성
+          </label>
+        </div>
 
+        <label >내용</label>
         <textarea
           id="content"
           type="text"

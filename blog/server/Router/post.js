@@ -16,6 +16,7 @@ router.post("/submit", (req, res) => {
     title: req.body.title,
     content: req.body.content,
     image: req.body.image,
+    secret: req.body.secret,
   }
 
   // data : { title: 'test2', content: 'test2', Image: data , uid}

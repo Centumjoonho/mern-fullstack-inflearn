@@ -16,7 +16,7 @@ const Home = () => {
 
                 </div>
                 <div>
-                    <Counter />
+                    {/* <Counter /> */}
                 </div>
 
             </div>

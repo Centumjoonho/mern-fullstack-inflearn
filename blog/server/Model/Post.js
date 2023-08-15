@@ -5,6 +5,7 @@ const postSchema = new mongoose.Schema({
     content: String,
     postNum: Number,
     image: String,
+    secret: Boolean,
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
