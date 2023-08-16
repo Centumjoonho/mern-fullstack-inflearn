@@ -48,7 +48,11 @@ const UploadForm = styled.form`
   }
   label {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 0px;
+  }
+  .secret_radio{
+    display: flex; 
+    align-items: center; 
   }
 `;
 

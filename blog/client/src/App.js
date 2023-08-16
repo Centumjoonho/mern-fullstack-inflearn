@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import './App.css';
 import Heading from './Component/Heading';
-import List from './Component/Post/List';
 import Upload from './Component/Post/Upload';
 import Edit from './Component/Post/Edit';
 import Home from './Component/Home';
@@ -58,16 +57,17 @@ function App() {
         dispatch(clearUser());
       }
 
-    })
+    });
+    //웹페이지 종료 시 동시 로그 아웃
+    return () => {
+      dispatch(clearUser());
+    }
 
   }, [])
 
   useEffect(() => {
     console.log(user)
   }, [user])
-
-
-
 
   return (
     <>

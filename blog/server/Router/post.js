@@ -97,6 +97,7 @@ router.post("/edit", (req, res) => {
     title: req.body.title,
     content: req.body.content,
     image: req.body.image,
+    secret: req.body.secret,
   };
 
   Post.updateOne({ postNum: Number(req.body.postNum) }, { $set: temp })

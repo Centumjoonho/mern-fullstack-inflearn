@@ -44,6 +44,7 @@ const List = (props) => {
                         post.author.displayName !== user.displayName && post.secret === true ? (
                             <ListItem key={index}>
                                 <Link to={`/list`}>
+
                                     <p className='title'> {post.title}</p>
                                     <div className="author">
                                         <Avatar size="40" round={true} src={post.author.photoURL} style={{ border: "0.5px solid black" }} />
@@ -51,8 +52,16 @@ const List = (props) => {
                                     </div>
 
                                     <p className='content'> 비밀글입니다.</p>
-                                    {setTime(post.createdAt, post.updatedAt)}
+
+
                                 </Link>
+
+                                {setTime(post.createdAt, post.updatedAt)}
+                                <div className='secret-mng'>
+                                    {user.displayName === "이준호" ? (
+                                        <button onClick={() => { navigate(`/post/${post.postNum}`) }}>관리자</button>
+                                    ) : null}
+                                </div>
                             </ListItem>
                         ) : (<ListItem key={index}>
                             <Link to={`/post/${post.postNum}`}>

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import Avatar from 'react-avatar'
 import axios from 'axios'
-import { CgAdd } from 'react-icons/cg'
 import { RxUpdate } from 'react-icons/rx'
 import firebase from '../../firebase'
 

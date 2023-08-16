@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ImageUpload from "./ImageUpload.js";
 import { useSelector } from "react-redux";
-import Secret from "./Secret.js";
 
 
 const Upload = (props) => {
@@ -13,7 +12,7 @@ const Upload = (props) => {
   const [Content, setContent] = useState("");
   const [Image, setImage] = useState("");
   const [Secret_Check, setSecret_Check] = useState(false);
-  // const [selectedOption, setSelectedOption] = useState(null);
+
   const navigate = useNavigate();
 
   const user = useSelector((state => state.user))
@@ -97,7 +96,7 @@ const Upload = (props) => {
             style={{ marginRight: "5px" }}
           />
           <label>
-            비밀글 작성
+            비밀글
           </label>
         </div>
 

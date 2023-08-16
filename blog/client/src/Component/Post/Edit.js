@@ -22,6 +22,8 @@ function Edit() {
 
     const [Image, setImage] = useState("");
 
+    const [Secret_Check, setSecret_Check] = useState(null);
+
     const navigate = useNavigate();
 
     // 수정된 부분: ImageDownloadLink 컴포넌트를 위한 상태 추가
@@ -51,9 +53,21 @@ function Edit() {
         setTitle(PostInfo.title);
         setContent(PostInfo.content);
         setImage(PostInfo.image);
+        setSecret_Check(PostInfo.secret);
 
 
     }, [PostInfo]);
+
+    const handleOptionChange = (value) => {
+
+        if (value === "비밀글") {
+            setSecret_Check(true);
+        }
+        else {
+            setSecret_Check(false);
+        }
+
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -67,6 +81,7 @@ function Edit() {
             content: Content,
             postNum: params.postNum,
             image: Image,
+            secret: Secret_Check,
         };
 
         axios
@@ -104,6 +119,35 @@ function Edit() {
                 {ImageDownloadLink && (
                     <Download filePath={ImageDownloadLink} />
                 )}
+                <div className="secret_radio">
+                    <div style={{ margin: "5px" }}>
+                        <input
+                            type="radio"
+                            name="secret"
+                            value="비밀글"
+                            checked={Secret_Check === true}
+                            onChange={(e) => handleOptionChange(e.currentTarget.value)}
+                            style={{ marginRight: "5px" }}
+                        />
+                        <label>
+                            비밀글
+                        </label>
+                    </div>
+
+                    <div style={{ margin: "5px" }}>
+                        <input
+                            type="radio"
+                            name="secret"
+                            value="공개글"
+                            checked={Secret_Check === false}
+                            onChange={(e) => handleOptionChange(e.currentTarget.value)}
+                            style={{ marginRight: "5px" }}
+                        />
+                        <label>
+                            공개글
+                        </label>
+                    </div>
+                </div>
 
                 <label>내용</label>
 

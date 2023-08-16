@@ -48,6 +48,36 @@ const ListItem = styled.div`
         display: flex;
         flex-direction: row-reverse;
       }
+      .secret-mng{
+        display: flex;
+        flex-direction: row-reverse;
+
+        button{
+          background-color: #0a2642;
+          height: 30px;
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 12px;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          
+        
+          &:hover {
+            background-color: #0056b3;
+          }
+        
+          &:active {
+            background-color: #003d80;
+          }
+  
+        
+      }
+     
+      }
 
 `;
 
