@@ -10,6 +10,8 @@ import ImageUpload from "./ImageUpload.js";
 import axios from "axios";
 import Download from "./Download.js"; // 추가
 
+import QuillEditor from "./QuillEditor.js";
+
 function Edit() {
     // 경로 상 존재하는 postNum 변수 값(string)
     let params = useParams();
@@ -151,14 +153,21 @@ function Edit() {
 
                 <label>내용</label>
 
-                <textarea
+                {/* <textarea
                     id="content"
                     type="text"
                     value={Content || ""}
                     onChange={(e) => {
                         setContent(e.currentTarget.value);
                     }}
-                />
+                /> */}
+                {/* <ReactQuill
+                    id="content"
+                    value={Content || ""}
+                    onChange={(value) => setContent(value)}
+                /> */}
+                <QuillEditor Content={Content} setContent={setContent} />
+
 
                 <UploadButtonDiv>
                     <button

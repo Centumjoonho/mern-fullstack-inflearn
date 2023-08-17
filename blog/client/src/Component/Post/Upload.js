@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import ImageUpload from "./ImageUpload.js";
 import { useSelector } from "react-redux";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const Upload = (props) => {
 
@@ -21,7 +22,7 @@ const Upload = (props) => {
     if (!user.accessToken) {
       navigate("/login");
       alert("로그인한 회원만 글을 작성할 수 있습니다.");
-
+      //이것도 한번 손 봐야한다 ....
     }
 
 
@@ -41,7 +42,7 @@ const Upload = (props) => {
     // body 집어넣는 변수는 db 칼럼 명과 맞춰야한다 
     let body = {
       title: Title,
-      content: Content,
+      content: Content.replace(/<[^>]*>/g, ''),
       image: Image,
       uid: user.uid,
       secret: Secret_Check,
@@ -101,13 +102,18 @@ const Upload = (props) => {
         </div>
 
         <label >내용</label>
-        <textarea
+        {/* <textarea
           id="content"
           type="text"
           value={Content}
           onChange={(e) => {
             setContent(e.currentTarget.value);
           }}
+        /> */}
+        <ReactQuill
+          id="content"
+          value={Content}
+          onChange={(value) => setContent(value)}
         />
 
         <UploadButtonDiv

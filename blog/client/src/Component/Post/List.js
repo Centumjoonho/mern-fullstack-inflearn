@@ -6,6 +6,7 @@ import moment from 'moment'
 import 'moment/locale/ko'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import parse from 'html-react-parser';
 
 const List = (props) => {
 
@@ -71,11 +72,10 @@ const List = (props) => {
                                     <p style={{ margin: "5px" }}>{post.author.displayName}</p>
                                 </div>
 
-                                <p className='content'> {post.content}</p>
+                                <p className='content'> {parse(post.content)}</p>
                                 {setTime(post.createdAt, post.updatedAt)}
                             </Link>
                         </ListItem>)
-
 
 
                     )

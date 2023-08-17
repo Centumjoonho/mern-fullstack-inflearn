@@ -7,6 +7,7 @@ import Avatar from 'react-avatar';
 import Download from "./Download";
 import moment from "moment";
 import 'moment/locale/ko'
+import parse from 'html-react-parser';
 
 function Detail(props) {
     // 경로 상 존재하는 postNum 변수 값(string)
@@ -15,6 +16,8 @@ function Detail(props) {
     const user = useSelector(state => state.user);
 
     const navigate = useNavigate();
+
+    const renderedContent = props.PostInfo.content;
 
     const DeleteHandler = () => {
         if (window.confirm("정말 해당 내용을 삭제하시겠습니까")) {
@@ -72,7 +75,7 @@ function Detail(props) {
                         </>
 
                     ) : null}
-                    <p className="content">{props.PostInfo.content}</p>
+                    <p className="content">{parse(renderedContent)}</p>
 
 
 
