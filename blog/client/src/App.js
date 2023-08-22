@@ -10,6 +10,8 @@ import Register from './Component/User/Register';
 import PostArea from './Component/Post/PostArea';
 import Mypage from './Component/User/Mypage';
 import ListPage from './Component/ListPage';
+import MapPage from './Component/Map/MapPage';
+import MapUpload from './Component/Map/Upload';
 
 //react-redux
 import { Counter } from './features/counter/Counter';
@@ -93,6 +95,10 @@ function App() {
         <Route path='/my_page' element={<Mypage />} />
 
         <Route path='/counter' element={<Counter />} />
+
+        <Route path='/map_page' element={<MapPage />} />
+
+        <Route path='/map_upload' element={<MapUpload />} />
 
       </Routes>
 

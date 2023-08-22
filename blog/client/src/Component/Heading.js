@@ -36,7 +36,7 @@ const Heading = () => {
 
                         <Link to="/upload" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>UPLOAD</Link>
 
-
+                        <Link to="/map_page" style={{ color: "white", textDecoration: "none", marginRight: "10px" }}>MAP</Link>
 
                     </Nav>
                 </Navbar.Collapse>
