@@ -6,8 +6,8 @@ import styled from "styled-components";
 // color: string
 
 function Span({ children, size = "normal", color }) {
-    const StyledSpan = styled.span`
-    color: ${(props) => props.color || "black"};
+  const StyledSpan = styled.span`
+    color: ${(props) => props.color || "white"};
 
     &.small {
       font-size: 0.8rem;
@@ -23,7 +23,7 @@ function Span({ children, size = "normal", color }) {
     }
   `;
 
-    return <StyledSpan className={size} color={color}>{children}</StyledSpan>;
+  return <StyledSpan className={size} color={color}>{children}</StyledSpan>;
 }
 
 export default memo(Span);

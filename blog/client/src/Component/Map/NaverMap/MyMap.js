@@ -6,7 +6,6 @@ import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver
 //https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html
 const MyMap = () => {
 
-
     const navermaps = useNavermaps()
 
     return (

@@ -5,7 +5,7 @@ import styled from "styled-components";
 // height
 
 function MapDivider({ width, height }) {
-    const StyledDivider = styled.div`
+  const StyledDivider = styled.div`
     width: ${(props) => (props.width ? props.width : "1px")};
     height: ${(props) => (props.height ? props.height : "20px")};
     opacity: 0.2;
@@ -13,7 +13,7 @@ function MapDivider({ width, height }) {
     margin: 0 8px;
   `;
 
-    return <StyledDivider width={width} height={height} />;
+  return <StyledDivider width={width} height={height} />;
 }
 
 export default memo(MapDivider);

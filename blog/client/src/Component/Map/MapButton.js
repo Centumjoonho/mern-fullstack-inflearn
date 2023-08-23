@@ -16,8 +16,10 @@ function MapButton({ children, onClick, type = "button", url }) {
     justify-content: center;
     background: none;
     padding: 0;
+    color:white;
     cursor: pointer;
     a{
+        color:white;
         text-decoration: none;
     }
     
