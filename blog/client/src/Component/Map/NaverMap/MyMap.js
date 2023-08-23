@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
 
 //npm install react-naver-maps
@@ -7,6 +7,7 @@ import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver
 const MyMap = () => {
 
     const navermaps = useNavermaps()
+    const [center, setCenter] = useState([37.3595704, 127.105399]);
 
     return (
         <NaverMap
@@ -17,6 +18,7 @@ const MyMap = () => {
                 defaultPosition={new navermaps.LatLng(37.3595704, 127.105399)}
             />
         </NaverMap>
+
     )
 
 }
