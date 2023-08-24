@@ -19,7 +19,6 @@ function MapButton({ children, onClick, type = "button", url }) {
     color:white;
     cursor: pointer;
     a{
-        color:white;
         text-decoration: none;
     }
     

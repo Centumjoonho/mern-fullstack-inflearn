@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
+import MyMarkers from './MyMarkers'
+import MyButton from './MyButton'
 
 //npm install react-naver-maps
 //https://colinch4.github.io/2021-06-07/navermap/
@@ -17,6 +19,8 @@ const MyMap = () => {
             <Marker
                 defaultPosition={new navermaps.LatLng(37.3595704, 127.105399)}
             />
+            <MyMarkers />
+            <MyButton />
         </NaverMap>
 
     )
