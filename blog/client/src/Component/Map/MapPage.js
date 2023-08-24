@@ -15,7 +15,6 @@ const MapPage = () => {
             <NavermapsProvider
                 ncpClientId='a7spceqyli'>
                 <GlobalCSS />
-                <MapNavigation />
                 <NaverMapContainer />
             </NavermapsProvider>
         </>
