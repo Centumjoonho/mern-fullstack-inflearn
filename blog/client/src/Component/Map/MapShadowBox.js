@@ -9,7 +9,7 @@ function MapShadowBox({ children }) {
     align-items: center;
     position: absolute;
     top: 16px;
-    left: 16px;
+    left: 80px;
     right: 16px;
     max-width: 400px;
     border-radius: 10px;
@@ -20,17 +20,20 @@ function MapShadowBox({ children }) {
     z-index: 101; // navermap 100
     background: #A9A9A9;
 
-    @media (max-width: 537px) {
+    @media (max-width: 600px) {
       max-width: 350px;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 537px) {
       max-width: 300px;
     }
-    @media (max-width: 450px) {
+    @media (max-width: 500px) {
       max-width: 250px;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
       max-width: 200px;
+    }
+    @media (max-width: 400px) {
+      max-width: 175px;
     }
 
   `;
