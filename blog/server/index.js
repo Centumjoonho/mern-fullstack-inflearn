@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/post", require("./Router/post.js"));
 app.use("/api/user", require("./Router/user.js"));
 app.use("/api/reple", require("./Router/reple.js"));
+app.use("/api/data", require("./Router/data.js"));
 
 // 라우트 정의
 app.get("/", (req, res) => {

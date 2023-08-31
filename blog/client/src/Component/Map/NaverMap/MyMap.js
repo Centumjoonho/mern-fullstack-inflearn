@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container as MapDiv, NaverMap, Marker, useNavermaps, InfoWindow } from 'react-naver-maps'
 import MyMarkers from './MyMarkers'
 import MyButton from './MyButton'
+import axios from "axios";
 
 
 //npm install react-naver-maps
@@ -59,6 +60,32 @@ const MyMap = () => {
             )
             infowindow.open(map, center)
         }
+    }
+
+    const evCharger = () => {
+
+        var url = 'http://apis.data.go.kr/B552584/EvCharger/getChargerInfo';
+        var queryParams = '?' + encodeURIComponent('serviceKey') + '=NdbEdqC6AC4FnV%2BEPdFfqVXv55cNZPizD5Nr3ZvT7ZVoIk%2Bhbra9C4TMN3YRJYG3HXBy0DYax%2FlDCRor5Nhryg%3D%3D'; /* Service Key*/
+        queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
+        queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
+        queryParams += '&' + encodeURIComponent('period') + '=' + encodeURIComponent('5'); /* */
+        queryParams += '&' + encodeURIComponent('zcode') + '=' + encodeURIComponent('11'); /* */
+
+        axios.get(url + queryParams)
+            .then(response => {
+                console.log('Status', response.status);
+                console.log('Headers', JSON.stringify(response.headers));
+                console.log('Response received', response.data);
+
+                const responseData = response.data; // Get the actual data
+
+
+                // Handle the response data as needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
     }
 
     useEffect(() => {
